@@ -3,5 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="MenuItem">
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
     </Application.Resources>
 </Application>
