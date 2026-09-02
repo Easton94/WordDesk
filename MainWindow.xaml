@@ -105,8 +105,7 @@
                                 Click="Italic_Click"/>
 
                         <Button Content="U"
-                                TextDecorations="Underline"
-                                Click="Underline_Click"/>
+        Click="Underline_Click"/>
 
                         <Separator Width="10"/>
 
