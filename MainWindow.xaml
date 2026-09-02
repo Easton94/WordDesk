@@ -4,134 +4,211 @@
         Title="WordDesk"
         Width="1200"
         Height="800"
-        MinWidth="800"
+        MinWidth="850"
         MinHeight="600"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
 
-    <DockPanel>
+    <DockPanel Background="#E5E5E5">
 
-        <!-- Top toolbar -->
+        <!-- TOP TOOLBAR -->
         <Border DockPanel.Dock="Top"
+                Background="White"
                 BorderBrush="#CCCCCC"
-                BorderThickness="0,0,0,1"
-                Padding="8">
+                BorderThickness="0,0,0,1">
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel>
 
-                <Button Content="New"
-                        Width="70"
-                        Margin="3"/>
+                <Grid Margin="6">
 
-                <Button Content="Open"
-                        Width="70"
-                        Margin="3"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <Button Content="Save"
-                        Width="70"
-                        Margin="3"/>
+                    <StackPanel Orientation="Horizontal">
 
-                <Button Content="Print"
-                        Width="70"
-                        Margin="3"/>
+                        <Button Content="New"
+                                Click="New_Click"/>
 
-                <Button Content="PDF"
-                        Width="70"
-                        Margin="3"/>
+                        <Button Content="Open"
+                                Click="Open_Click"/>
 
-                <Separator Width="10"/>
+                        <Button Content="Save"
+                                Click="Save_Click"/>
 
-                <Button Content="Undo"
-                        Width="70"
-                        Margin="3"/>
+                        <Button Content="Print"
+                                Click="Print_Click"/>
 
-                <Button Content="Redo"
-                        Width="70"
-                        Margin="3"/>
+                        <Button Content="PDF"
+                                Click="Pdf_Click"/>
 
-                <!-- Options dropdown -->
-                <ComboBox Width="180"
-                          Margin="15,3,3,3"
-                          SelectedIndex="0">
+                        <Separator Width="10"/>
 
-                    <ComboBoxItem Content="Options ▾"/>
+                        <Button Content="↶ Undo"
+                                Click="Undo_Click"/>
 
-                    <ComboBoxItem Content="Advanced Mode"/>
+                        <Button Content="↷ Redo"
+                                Click="Redo_Click"/>
 
-                    <ComboBoxItem Content="Developer Settings"/>
+                    </StackPanel>
 
-                </ComboBox>
+                    <!-- OPTIONS MENU -->
+                    <Menu Grid.Column="1"
+                          VerticalAlignment="Center">
+
+                        <MenuItem Header="Options ▾">
+
+                            <MenuItem Header="Simple Mode"
+                                      Click="SimpleMode_Click"/>
+
+                            <MenuItem Header="Advanced Mode"
+                                      Click="AdvancedMode_Click"/>
+
+                            <Separator/>
+
+                            <MenuItem Header="Developer Settings"
+                                      Click="DeveloperSettings_Click"/>
+
+                        </MenuItem>
+
+                    </Menu>
+
+                </Grid>
+
+                <!-- ADVANCED TOOLBAR -->
+                <Border x:Name="AdvancedToolbar"
+                        Visibility="Collapsed"
+                        Background="#F7F7F7"
+                        BorderBrush="#DDDDDD"
+                        BorderThickness="0,1,0,1"
+                        Padding="5">
+
+                    <WrapPanel>
+
+                        <ComboBox x:Name="FontBox"
+                                  Width="140"
+                                  Margin="3"
+                                  SelectionChanged="FontBox_SelectionChanged"/>
+
+                        <ComboBox x:Name="FontSizeBox"
+                                  Width="70"
+                                  Margin="3"
+                                  SelectionChanged="FontSizeBox_SelectionChanged"/>
+
+                        <Button Content="B"
+                                FontWeight="Bold"
+                                Click="Bold_Click"/>
+
+                        <Button Content="I"
+                                FontStyle="Italic"
+                                Click="Italic_Click"/>
+
+                        <Button Content="U"
+                                TextDecorations="Underline"
+                                Click="Underline_Click"/>
+
+                        <Separator Width="10"/>
+
+                        <Button Content="Left"
+                                Click="AlignLeft_Click"/>
+
+                        <Button Content="Center"
+                                Click="AlignCenter_Click"/>
+
+                        <Button Content="Right"
+                                Click="AlignRight_Click"/>
+
+                        <Button Content="Justify"
+                                Click="Justify_Click"/>
+
+                        <Separator Width="10"/>
+
+                        <Button Content="Find / Replace"
+                                Click="FindReplace_Click"/>
+
+                        <Button Content="Page Settings"
+                                Click="PageSettings_Click"/>
+
+                    </WrapPanel>
+
+                </Border>
 
             </StackPanel>
 
         </Border>
 
-        <!-- Ruler -->
+        <!-- RULER -->
         <Border DockPanel.Dock="Top"
-                Background="#EEEEEE"
-                Height="35"
+                Height="42"
+                Background="#F0F0F0"
                 BorderBrush="#BBBBBB"
                 BorderThickness="0,0,0,1">
 
-            <Canvas>
+            <Canvas x:Name="RulerCanvas">
 
                 <TextBlock Text="0"
-                           Canvas.Left="10"
-                           Canvas.Top="8"/>
+                           Canvas.Left="12"
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="1"
                            Canvas.Left="100"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="2"
                            Canvas.Left="200"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="3"
                            Canvas.Left="300"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="4"
                            Canvas.Left="400"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="5"
                            Canvas.Left="500"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="6"
                            Canvas.Left="600"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="7"
                            Canvas.Left="700"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
 
                 <TextBlock Text="8"
                            Canvas.Left="800"
-                           Canvas.Top="8"/>
+                           Canvas.Top="15"/>
+
+                <TextBlock Text="9"
+                           Canvas.Left="900"
+                           Canvas.Top="15"/>
 
             </Canvas>
 
         </Border>
 
-        <!-- Document area -->
+        <!-- DOCUMENT AREA -->
         <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
 
-            <Grid Background="#D9D9D9"
-                  Margin="0">
+            <Grid Background="#D8D8D8">
 
                 <RichTextBox x:Name="Editor"
                              Width="816"
                              MinHeight="1056"
                              Margin="60"
                              Padding="75"
-                             VerticalScrollBarVisibility="Auto"
-                             HorizontalScrollBarVisibility="Disabled"
-                             AcceptsTab="True"
+                             Background="White"
                              FontFamily="Arial"
                              FontSize="12"
-                             Background="White"/>
+                             AcceptsTab="True"
+                             VerticalScrollBarVisibility="Auto"
+                             HorizontalScrollBarVisibility="Disabled"
+                             TextChanged="Editor_TextChanged"/>
 
             </Grid>
 
