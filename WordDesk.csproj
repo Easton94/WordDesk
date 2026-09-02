@@ -6,6 +6,8 @@
     <UseWPF>true</UseWPF>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>WordDesk</AssemblyName>
+    <RootNamespace>WordDesk</RootNamespace>
   </PropertyGroup>
 
 </Project>
